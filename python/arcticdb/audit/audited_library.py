@@ -4,9 +4,8 @@ Audited wrapper for ArcticDB Library with user_id enforcement.
 
 from typing import Any, Optional, List, Union
 from functools import wraps
-from arcticdb.version_store.library import Library, WritePayload, UpdatePayload, ReadRequest
+from arcticdb.version_store.library import Library, WritePayload, UpdatePayload, ReadRequest, ArcticInvalidApiUsageException
 from arcticdb.audit.audit_logger import AuditLogger
-from arcticdb.exceptions import ArcticInvalidApiUsageException
 
 
 def _ensure_user_id(func):
