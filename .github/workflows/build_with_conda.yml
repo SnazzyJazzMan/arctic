@@ -56,6 +56,7 @@ jobs:
 
   linux:
     if: |
+      vars.ENABLE_CI_WORKFLOWS == 'true' &&
       always() &&
       !cancelled()
     runs-on: ubuntu-22.04

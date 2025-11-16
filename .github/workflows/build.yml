@@ -62,6 +62,7 @@ jobs:
 
   storage_type:
     runs-on: ubuntu-latest
+    if: vars.ENABLE_CI_WORKFLOWS == 'true'
     env:
       INPUT_STORAGE: ${{ inputs.persistent_storage }}
     outputs:

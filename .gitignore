@@ -57,3 +57,9 @@ __azurite_*
 # Ignore sports db and sports exports
 docs/mkdocs/docs/notebooks/arcticdb_sports/
 docs/mkdocs/docs/notebooks/exports/
+
+# Ignore audit logs and demo databases
+*_audit.log
+arcticdb_audit.log
+demo_audit_db/
+demo_audit.log

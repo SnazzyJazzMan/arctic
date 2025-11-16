@@ -4,7 +4,7 @@ import os as _os
 import arcticdb_ext as _ext
 import sys as _sys
 
-from arcticdb.arctic import Arctic
+from arcticdb.arctic import Arctic as _OriginalArctic
 from arcticdb.options import LibraryOptions, OutputFormat, RuntimeOptions, ArrowOutputStringFormat
 from arcticdb.version_store.processing import QueryBuilder, where
 from arcticdb.version_store._store import VersionedItem
@@ -27,6 +27,18 @@ from arcticdb.version_store.library import (
     WriteMetadataPayload,
 )
 from arcticdb.version_store.admin_tools import KeyType, Size
+
+# Enterprise audit module - make it the default Arctic
+try:
+    from arcticdb.audit import AuditedArctic as Arctic
+    from arcticdb import audit
+    # Keep original Arctic available for those who need it
+    OriginalArctic = _OriginalArctic
+except ImportError:
+    # Audit module dependencies not available, fall back to original
+    Arctic = _OriginalArctic
+    audit = None
+    OriginalArctic = _OriginalArctic
 
 set_config_from_env_vars(_os.environ)
 

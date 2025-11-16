@@ -6,6 +6,7 @@ on:
 jobs:
   check_labels:
     runs-on: ubuntu-latest
+    if: vars.ENABLE_CI_WORKFLOWS == 'true'
     permissions:
       issues: write
       pull-requests: write

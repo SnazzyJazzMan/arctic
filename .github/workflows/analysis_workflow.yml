@@ -38,8 +38,9 @@ on:
 jobs:
 
   get_commits_to_benchmark:
-    name: Get tag commits  
+    name: Get tag commits
     runs-on: ubuntu-22.04
+    if: vars.ENABLE_CI_WORKFLOWS == 'true'
     steps:  
       - name: Checkout code 
         uses: actions/checkout@v3.3.0
