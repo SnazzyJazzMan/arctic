@@ -18,15 +18,9 @@ jobs:
           fetch-depth: 0
       
       - name: Run Augment Code Review
-        uses: augmentcode/augment-agent@v1
+        uses: augmentcode/review-pr@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          augment-token: ${{ secrets.AUGMENT_SESSION_TOKEN }}
-          instruction: |
-            Review this pull request for:
-            - Code quality issues
-            - Potential bugs
-            - Best practices
-            - Security concerns
-            
-            Provide constructive feedback as a PR comment.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          augment_session_auth: ${{ secrets.AUGMENT_SESSION_AUTH }}
+          pull_number: ${{ github.event.pull_request.number }}
+          repo_name: ${{ github.repository }}
