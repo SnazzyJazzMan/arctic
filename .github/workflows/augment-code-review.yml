@@ -1,0 +1,32 @@
+name: Augment Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run Augment Code Review
+        uses: augmentcode/augment-agent@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          augment-token: ${{ secrets.AUGMENT_SESSION_TOKEN }}
+          instruction: |
+            Review this pull request for:
+            - Code quality issues
+            - Potential bugs
+            - Best practices
+            - Security concerns
+            
+            Provide constructive feedback as a PR comment.
