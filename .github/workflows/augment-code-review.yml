@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       
       - name: Run Augment Code Review
-        uses: augmentcode/review-pr@v1
+        uses: augmentcode/review-pr@v0.1.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           augment_session_auth: ${{ secrets.AUGMENT_SESSION_AUTH }}
